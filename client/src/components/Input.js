@@ -73,7 +73,7 @@ const Input = () => {
   };
 
   return (
-    <div style={{ margin: "40px" }}>
+    <div style={{ margin: "40px", backgroundColor: "#313b33" }}>
       {" "}
       <Card>
         <Card.Body>
