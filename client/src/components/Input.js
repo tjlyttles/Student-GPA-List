@@ -38,7 +38,7 @@ const Input = () => {
     id++;
     let newStudent = { _id: id, name: name, grades: grades };
     students.data.push(newStudent);
-    console.log(students.data);
+   
     setState({
       ...state,
       name: "",

@@ -21,14 +21,14 @@ const TableData = ({ students }) => {
     return grades
        .reduce((total, grade) => {
          grade = gradeMap[grade.slice(-1)];
-         //console.log("grade score:",grade);
+        
         return total += grade / 4;
        }, 0);
    };
 
   const createRow = (_id, name, math, history, science, english, grades) => {
     const averageGpa = getGpa(grades);
-    console.log("GPA:", averageGpa);
+    
     return { _id, name, math, history, science, english, averageGpa };
   };
 
@@ -45,7 +45,7 @@ const TableData = ({ students }) => {
       )
     )
   ;
-  console.log(rows);
+  
 
   const highest = rows.reduce((previous, student) => {
     return (previous || 0) > student.averageGpa
@@ -54,10 +54,10 @@ const TableData = ({ students }) => {
   }, 0);
 
   const lowest = rows.reduce((prev, student) => {
-    return (prev || 4) < student.averageGpa
+    return (prev || 0) < student.averageGpa
       ? prev
       : student.averageGpa;
-  }, 0);
+  }, 4);
 
   console.log(lowest);
   console.log(highest);
