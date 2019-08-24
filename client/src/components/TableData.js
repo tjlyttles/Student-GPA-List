@@ -1,5 +1,6 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
+//import Button from 'react-bootstrap/Button'
 
 const greenHighlight = {
   backgroundColor: " #aaff80"
@@ -94,8 +95,11 @@ const TableData = ({ students }) => {
                 <td>{row.science}</td>
                 <td>{row.english}</td>
                 <td>{row.averageGpa}</td>
+                {/* <Button size="sm" variant="outline-dark">Delete</Button> */}
               </tr>
+              
             ))}
+            
           </tbody>
         </Table>
       )}

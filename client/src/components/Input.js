@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import TableData from "../components/TableData";
+import API from "../utils/API";
 import { data } from "../students.json";
 
 const Input = () => {
@@ -35,10 +36,16 @@ const Input = () => {
       `Science - ${scienceGpa}`,
       `English - ${englishGpa}`
     );
+
     id++;
     let newStudent = { _id: id, name: name, grades: grades };
     students.data.push(newStudent);
-   
+
+    let newData = students;
+    let data = JSON.stringify(newData);
+
+    API.saveStudent({ data }).catch(err => console.log(err));
+
     setState({
       ...state,
       name: "",
@@ -73,7 +80,7 @@ const Input = () => {
   };
 
   return (
-    <div style={{ margin: "40px"}}>
+    <div style={{ margin: "40px" }}>
       {" "}
       <Card>
         <Card.Body>

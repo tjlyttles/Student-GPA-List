@@ -1,6 +1,6 @@
 {
-    "data":
-    [{
+  "data": [
+    {
       "_id": 1,
       "name": "Adam",
       "grades": ["Math - A", "History - B", "Science - A", "English - B"],
@@ -9,7 +9,8 @@
       "birthday": "July 23, 2003",
       "athlete": true,
       "grade": 10
-    },{
+    },
+    {
       "_id": 2,
       "name": "John",
       "grades": ["Math - B", "History - B", "Science - B", "English - B"],
@@ -18,7 +19,8 @@
       "birthday": "September 8, 2005",
       "athlete": false,
       "grade": 8
-    },{
+    },
+    {
       "_id": 3,
       "name": "Sarah",
       "grades": ["Math - C", "History - B", "Science - B", "English - C"],
@@ -27,7 +29,8 @@
       "birthday": "January 17, 2004",
       "athlete": false,
       "grade": 9
-    },{
+    },
+    {
       "_id": 4,
       "name": "Katie",
       "grades": ["Math - D", "History - B", "Science - C", "English - B"],
@@ -36,7 +39,8 @@
       "birthday": "October 6, 2005",
       "athlete": true,
       "grade": 8
-    },{
+    },
+    {
       "_id": 5,
       "name": "Phil",
       "grades": ["Math - F", "History - B", "Science - C", "English - D"],
@@ -45,6 +49,6 @@
       "birthday": "August 13, 2001",
       "athlete": false,
       "grade": 12
-    }]
-  }
-  
+    }
+  ]
+}
