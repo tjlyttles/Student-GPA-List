@@ -60,8 +60,8 @@ const TableData = ({ students }) => {
       : student.averageGpa;
   }, 4);
 
-  console.log(lowest);
-  console.log(highest);
+  // console.log(lowest);
+  // console.log(highest);
 
   return (
     <div style={{ margin: "40px" }}>
@@ -94,7 +94,7 @@ const TableData = ({ students }) => {
                 <td>{row.history}</td>
                 <td>{row.science}</td>
                 <td>{row.english}</td>
-                <td>{row.averageGpa}</td>
+                <td>{row.averageGpa.toFixed(2)}</td>
                 {/* <Button size="sm" variant="outline-dark">Delete</Button> */}
               </tr>
               
