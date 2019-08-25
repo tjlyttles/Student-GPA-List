@@ -2,6 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import API from '../utils/API'
 
 const greenHighlight = {
   backgroundImage:
@@ -11,6 +12,8 @@ const redHighlight = {
   backgroundImage:
     "linear-gradient(to right, #ff4d4d 0, #ff4d4d 85.1%, transparent 75%)"
 };
+
+
 
 const TableData = ({ students }) => {
   const gradeMap = {
@@ -54,6 +57,11 @@ const TableData = ({ students }) => {
   const lowest = rows.reduce((prev, student) => {
     return (prev || 0) < student.averageGpa ? prev : student.averageGpa;
   }, 4);
+
+  const handleDelete = id => {
+    console.log("im clicked", students.data[id])
+    // API.deleteStudent(id).catch(err => console.log(err));
+  }
 
   // console.log(lowest);
   // console.log(highest);
@@ -110,7 +118,7 @@ const TableData = ({ students }) => {
                         🖊
                       </span>
                     </Button>{" "}
-                    <Button size="sm" variant="outline-danger">
+                    <Button onClick={() => handleDelete(row._id)} size="sm" variant="outline-danger">
                       <span role="img" aria-label="edit">
                         ❌
                       </span>

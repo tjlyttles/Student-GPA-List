@@ -14,13 +14,14 @@ const Input = () => {
   const [show, setShow] = useState(false);
   const [state, setState] = useState({
     name: "",
+    athlete: false,
     grades: [],
     mathGpa: "",
     historyGpa: "",
     scienceGpa: "",
     englishGpa: ""
   });
-  const { name, grades, mathGpa, historyGpa, scienceGpa, englishGpa } = state;
+  const { name, grades, athlete, mathGpa, historyGpa, scienceGpa, englishGpa } = state;
 
   let id = data[data.length - 1]._id;
 
@@ -38,7 +39,7 @@ const Input = () => {
     );
 
     id++;
-    let newStudent = { _id: id, name: name, grades: grades };
+    let newStudent = { _id: id, name: name, athlete: athlete, grades: grades };
     students.data.push(newStudent);
 
     let newData = students;
@@ -67,6 +68,11 @@ const Input = () => {
       setState({ ...state, [e.target.name]: "" });
       e.target.value = "";
     }
+  };
+
+  const handleAthlete = e => {
+    
+    setState(state => ({...state, athlete: !state.athlete }));
   };
 
   const handleGrade = e => {
@@ -102,7 +108,22 @@ const Input = () => {
                   required
                 />
               </Col>
-
+              <Col>
+                {" "}
+                <br />{" "}
+                <Form.Check
+                  custom
+                  name="athlete"
+                  value={athlete}
+                  onClick={handleAthlete}
+                  type="checkbox"
+                  id="athlete"
+                  label="Athlete"
+                />
+              </Col>
+            </Form.Row>
+            <br />
+            <Form.Row>
               <Col>
                 {" "}
                 <Form.Label>Math</Form.Label>

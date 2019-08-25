@@ -1,4 +1,5 @@
 import axios from "axios";
+import students from "../students.json"
 
 export default {
   
@@ -8,7 +9,8 @@ export default {
 
   
   deleteStudent: function(id) {
-    return axios.delete("/api/students/" + id);
+    return delete students.data[id]
+    //axios.delete("/api/students/" + id);
   },
   
   saveStudent: function(studentData) {
