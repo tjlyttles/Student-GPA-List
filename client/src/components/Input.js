@@ -93,12 +93,13 @@ const Input = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Label style={{ fontWeight: "bold" }}>
               {" "}
-              Enter Student's Name and Grades:
+              Enter Student's Info:
             </Form.Label>
             <Form.Row>
               <Col>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                style={{width: "16rem"}}
                   type="text"
                   name="name"
                   value={name || ""}
@@ -107,24 +108,7 @@ const Input = () => {
                   placeholder="Name"
                   required
                 />
-              </Col>
-              <Col>
-                {" "}
-                <br />{" "}
-                <Form.Check
-                  custom
-                  name="athlete"
-                  value={athlete}
-                  onClick={handleAthlete}
-                  type="checkbox"
-                  id="athlete"
-                  label="Athlete"
-                />
-              </Col>
-            </Form.Row>
-            <br />
-            <Form.Row>
-              <Col>
+              </Col><Col>
                 {" "}
                 <Form.Label>Math</Form.Label>
                 <Form.Control
@@ -151,8 +135,19 @@ const Input = () => {
                   placeholder="History"
                   required
                 />
-              </Col>
+              </Col></Form.Row> <br/> <Form.Row>
               <Col>
+          
+                <Form.Check
+                  custom
+                  name="athlete"
+                  value={athlete}
+                  onClick={handleAthlete}
+                  type="checkbox"
+                  id="athlete"
+                  label="Athlete"
+                />
+              </Col><Col>
                 {" "}
                 <Form.Label>Science</Form.Label>
                 <Form.Control
@@ -181,7 +176,6 @@ const Input = () => {
                 />
               </Col>
             </Form.Row>
-
             <br />
             <Button type="submit" variant="outline-primary" size="sm">
               Add Student

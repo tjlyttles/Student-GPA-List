@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, Fragment } from "react";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import API from '../utils/API'
+import DeleteAlert from "./DeleteAlert";
 
 const greenHighlight = {
   backgroundImage:
@@ -13,9 +13,8 @@ const redHighlight = {
     "linear-gradient(to right, #ff4d4d 0, #ff4d4d 85.1%, transparent 75%)"
 };
 
-
-
 const TableData = ({ students }) => {
+  const [showAlert, setShowAlert] = useState(false);
   const gradeMap = {
     A: 4,
     B: 3,
@@ -32,7 +31,16 @@ const TableData = ({ students }) => {
     }, 0);
   };
 
-  const createRow = (_id, name, athlete, math, history, science, english, grades) => {
+  const createRow = (
+    _id,
+    name,
+    athlete,
+    math,
+    history,
+    science,
+    english,
+    grades
+  ) => {
     const averageGpa = getGpa(grades);
 
     return { _id, name, athlete, math, history, science, english, averageGpa };
@@ -58,79 +66,81 @@ const TableData = ({ students }) => {
     return (prev || 0) < student.averageGpa ? prev : student.averageGpa;
   }, 4);
 
-  const handleDelete = id => {
-    console.log("im clicked", students.data[id])
-    // API.deleteStudent(id).catch(err => console.log(err));
-  }
-
   // console.log(lowest);
   // console.log(highest);
 
   return (
-    <Card>
-      <div>
-        {rows && (
-          <Table responsive size="sm">
-            <thead>
-              <tr style={{ textAlign: "center" }}>
-                <th>#</th>
-                <th>Name</th>
-                <th>Athlete</th>
-                <th>Math</th>
-                <th>History</th>
-                <th>Science</th>
-                <th>English</th>
-                <th>GPA</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody style={{ textAlign: "center" }}>
-              {rows.map(row => (
-                <tr
-                  key={row._id}
-                  style={
-                    parseFloat(row.averageGpa) === highest
-                      ? greenHighlight
-                      : parseFloat(row.averageGpa) === lowest
-                      ? redHighlight
-                      : null
-                  }
-                >
-                  <td>{row._id}</td>
-                  <td>{row.name}</td>
-                  <td>
-                    <input
-                      disabled
-                      checked={row.athlete ? true : false}
-                      type={`radio`}
-                      id={`disabled-custom-radio`}
-                    />
-                  </td>
-                  <td>{row.math}</td>
-                  <td>{row.history}</td>
-                  <td>{row.science}</td>
-                  <td>{row.english}</td>
-                  <td>{row.averageGpa.toFixed(2)}</td>
-                  <td>
-                    <Button size="sm" variant="outline-dark">
-                      <span role="img" aria-label="edit">
-                        {" "}
-                        🖊
-                      </span>
-                    </Button>{" "}
-                    <Button onClick={() => handleDelete(row._id)} size="sm" variant="outline-danger">
-                      <span role="img" aria-label="edit">
-                        ❌
-                      </span>
-                    </Button>{" "}
-                  </td>
+    <Fragment>
+     {showAlert &&  <DeleteAlert setShowAlert={setShowAlert}/>}
+      <Card>
+        <div>
+          {rows && (
+            <Table responsive size="sm">
+              <thead>
+                <tr style={{ textAlign: "center" }}>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Athlete</th>
+                  <th>Math</th>
+                  <th>History</th>
+                  <th>Science</th>
+                  <th>English</th>
+                  <th>GPA</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
-      </div>
-    </Card>
+              </thead>
+              <tbody style={{ textAlign: "center" }}>
+                {rows.map(row => (
+                  <tr
+                    key={row._id}
+                    style={
+                      parseFloat(row.averageGpa) === highest
+                        ? greenHighlight
+                        : parseFloat(row.averageGpa) === lowest
+                        ? redHighlight
+                        : null
+                    }
+                  >
+                    <td>{row._id}</td>
+                    <td>{row.name}</td>
+                    <td>
+                      <input
+                        disabled
+                        checked={row.athlete ? true : false}
+                        type={`radio`}
+                        id={`disabled-custom-radio`}
+                      />
+                    </td>
+                    <td>{row.math}</td>
+                    <td>{row.history}</td>
+                    <td>{row.science}</td>
+                    <td>{row.english}</td>
+                    <td>{row.averageGpa.toFixed(2)}</td>
+                    <td>
+                      <Button size="sm" variant="outline-dark">
+                        <span role="img" aria-label="edit">
+                          {" "}
+                          🖊
+                        </span>
+                      </Button>{" "}
+                      <Button
+                        onClick={() => setShowAlert(true)}
+                        size="sm"
+                        variant="outline-danger"
+                      >
+                        <span role="img" aria-label="edit">
+                          ❌
+                        </span>
+                      </Button>{" "}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </div>
+      </Card>
+    </Fragment>
   );
 };
 
