@@ -1,8 +1,7 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
+import TableRow from "./TableRow";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import DeleteAlert from "./DeleteAlert";
 
 const greenHighlight = {
   backgroundImage:
@@ -14,7 +13,6 @@ const redHighlight = {
 };
 
 const TableData = ({ students }) => {
-  const [showAlert, setShowAlert] = useState(false);
   const gradeMap = {
     A: 4,
     B: 3,
@@ -71,7 +69,6 @@ const TableData = ({ students }) => {
 
   return (
     <Fragment>
-     {showAlert &&  <DeleteAlert setShowAlert={setShowAlert}/>}
       <Card>
         <div>
           {rows && (
@@ -89,53 +86,20 @@ const TableData = ({ students }) => {
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody style={{ textAlign: "center" }}>
-                {rows.map(row => (
-                  <tr
-                    key={row._id}
-                    style={
-                      parseFloat(row.averageGpa) === highest
-                        ? greenHighlight
-                        : parseFloat(row.averageGpa) === lowest
-                        ? redHighlight
-                        : null
-                    }
-                  >
-                    <td>{row._id}</td>
-                    <td>{row.name}</td>
-                    <td>
-                      <input
-                        disabled
-                        checked={row.athlete ? true : false}
-                        type={`radio`}
-                        id={`disabled-custom-radio`}
-                      />
-                    </td>
-                    <td>{row.math}</td>
-                    <td>{row.history}</td>
-                    <td>{row.science}</td>
-                    <td>{row.english}</td>
-                    <td>{row.averageGpa.toFixed(2)}</td>
-                    <td>
-                      <Button size="sm" variant="outline-dark">
-                        <span role="img" aria-label="edit">
-                          {" "}
-                          🖊
-                        </span>
-                      </Button>{" "}
-                      <Button
-                        onClick={() => setShowAlert(true)}
-                        size="sm"
-                        variant="outline-danger"
-                      >
-                        <span role="img" aria-label="edit">
-                          ❌
-                        </span>
-                      </Button>{" "}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+              {rows.map((row, i) => (
+                <tbody
+                  key={row._id}
+                  style={
+                    parseFloat(row.averageGpa) === highest
+                      ? greenHighlight
+                      : parseFloat(row.averageGpa) === lowest
+                      ? redHighlight
+                      : null
+                  }
+                >
+                  <TableRow row={row} students={students} />
+                </tbody>
+              ))}
             </Table>
           )}
         </div>

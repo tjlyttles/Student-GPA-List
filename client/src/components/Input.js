@@ -45,7 +45,7 @@ const Input = () => {
     let newData = students;
     let data = JSON.stringify(newData);
 
-    API.saveStudent({ data }).catch(err => console.log(err));
+    API.getStudents({ data }).catch(err => console.log(err));
 
     setState({
       ...state,
@@ -99,7 +99,7 @@ const Input = () => {
               <Col>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                style={{width: "16rem"}}
+                style={{width: "rem"}}
                   type="text"
                   name="name"
                   value={name || ""}
