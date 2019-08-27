@@ -11,7 +11,6 @@ const DeleteAlert = ({ setShowAlert, student, students }) => {
 
     students.data = students.data.filter(student => student._id !== id);
     let newData = students;
-    students.data.push(newData);
     let data = JSON.stringify(newData);
 
     API.getStudents({ data }).catch(err => console.log(err));

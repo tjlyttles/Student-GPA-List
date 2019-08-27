@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import DeleteAlert from "./DeleteAlert";
 
 const TableRow = ({ row, students }) => {
@@ -28,7 +28,7 @@ const TableRow = ({ row, students }) => {
             <td>{row.science}</td>
             <td>{row.english}</td>
             <td>{row.averageGpa.toFixed(2)}</td>
-            <td>
+            {/* <td>
               <Button size="sm" variant="outline-dark">
                 <span role="img" aria-label="edit">
                   {" "}
@@ -44,7 +44,7 @@ const TableRow = ({ row, students }) => {
                   ❌
                 </span>
               </Button>{" "}
-            </td>
+            </td> */}
           </tr>
         </Fragment>
       )}

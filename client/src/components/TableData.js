@@ -5,11 +5,11 @@ import Card from "react-bootstrap/Card";
 
 const greenHighlight = {
   backgroundImage:
-    "linear-gradient(to right, #aaff80 0, #aaff80 85.1%, transparent 75%)"
+    "linear-gradient(to right, #aaff80 0, #aaff80 100%, transparent 75%)"
 };
 const redHighlight = {
   backgroundImage:
-    "linear-gradient(to right, #ff4d4d 0, #ff4d4d 85.1%, transparent 75%)"
+    "linear-gradient(to right, #ff4d4d 0, #ff4d4d 100%, transparent 75%)"
 };
 
 const TableData = ({ students }) => {
@@ -83,7 +83,7 @@ const TableData = ({ students }) => {
                   <th>Science</th>
                   <th>English</th>
                   <th>GPA</th>
-                  <th>Actions</th>
+                  {/* <th>Actions</th> */}
                 </tr>
               </thead>
               {rows.map((row, i) => (
