@@ -7,7 +7,6 @@ import API from "../utils/API";
 
 const DeleteAlert = ({ setShowAlert, student, students }) => {
   const handleDelete = id => {
-
     console.log("im clicked", id);
 
     students.data = students.data.filter(student => student._id !== id);
@@ -28,10 +27,10 @@ const DeleteAlert = ({ setShowAlert, student, students }) => {
           style={{ marginBottom: "0" }}
         >
           <Row>
-            <Col md="auto">
+            <Col md={{ offset: 2 }}>
               <h6>Are you sure you want to delete this student record?</h6>
             </Col>{" "}
-            <Col md={{ span: 3, offset: 3 }}>
+            <Col>
               <Button
                 size="sm"
                 className="btn-danger"
