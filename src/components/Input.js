@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
-import TableData from "../components/TableData";
+import TableData from "./TableData";
 import API from "../utils/API";
 import { data } from "../students.json";
 
@@ -21,7 +21,15 @@ const Input = () => {
     scienceGpa: "",
     englishGpa: ""
   });
-  const { name, grades, athlete, mathGpa, historyGpa, scienceGpa, englishGpa } = state;
+  const {
+    name,
+    grades,
+    athlete,
+    mathGpa,
+    historyGpa,
+    scienceGpa,
+    englishGpa
+  } = state;
 
   let id = data[data.length - 1]._id;
 
@@ -71,8 +79,7 @@ const Input = () => {
   };
 
   const handleAthlete = e => {
-    
-    setState(state => ({...state, athlete: !state.athlete }));
+    setState(state => ({ ...state, athlete: !state.athlete }));
   };
 
   const handleGrade = e => {
@@ -99,7 +106,7 @@ const Input = () => {
               <Col>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                style={{width: "rem"}}
+                  style={{ width: "rem" }}
                   type="text"
                   name="name"
                   value={name || ""}
@@ -108,7 +115,8 @@ const Input = () => {
                   placeholder="Name"
                   required
                 />
-              </Col><Col>
+              </Col>
+              <Col>
                 {" "}
                 <Form.Label>Math</Form.Label>
                 <Form.Control
@@ -135,9 +143,11 @@ const Input = () => {
                   placeholder="History"
                   required
                 />
-              </Col></Form.Row> <br/> <Form.Row>
+              </Col>
+            </Form.Row>{" "}
+            <br />{" "}
+            <Form.Row>
               <Col>
-          
                 <Form.Check
                   custom
                   name="athlete"
@@ -147,7 +157,8 @@ const Input = () => {
                   id="athlete"
                   label="Athlete"
                 />
-              </Col><Col>
+              </Col>
+              <Col>
                 {" "}
                 <Form.Label>Science</Form.Label>
                 <Form.Control

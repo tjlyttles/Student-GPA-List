@@ -83,7 +83,7 @@ const TableData = ({ students }) => {
                   <th>Science</th>
                   <th>English</th>
                   <th>GPA</th>
-                  {/* <th>Actions</th> */}
+                  <th>Actions</th>
                 </tr>
               </thead>
               {rows.map((row, i) => (

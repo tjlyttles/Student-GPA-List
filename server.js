@@ -1,5 +1,5 @@
 const express = require("express");
-const studentData = require("./client/src/students.json")
+const studentData = require("./src/students.json.js")
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
